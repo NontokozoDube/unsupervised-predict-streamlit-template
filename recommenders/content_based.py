@@ -31,6 +31,17 @@
 import os
 import pandas as pd
 import numpy as np
+import numpy as np
+import os
+import pickle
+import copy
+from surprise import Reader, Dataset
+from surprise import SVD, NormalPredictor, BaselineOnly, KNNBasic, NMF
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import CountVectorizer
+import heapq
+from numpy.linalg import norm
+
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -38,6 +49,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 movies = pd.read_csv('resources/data/movies.csv', sep = ',')
 ratings = pd.read_csv('resources/data/ratings.csv')
 movies.dropna(inplace=True)
+
+
 
 def data_preprocessing(subset_size):
     """Prepare data for use within Content filtering algorithm.
